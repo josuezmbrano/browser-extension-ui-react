@@ -9,7 +9,7 @@ import { ExtensionContext } from "./ExtensionUI";
 
 export default function ExtensionList() {
   const [extension, setExtension] = React.useState(extensionData);
-  const { currentFilter } = React.useContext(ExtensionContext);
+  const { currentFilter, isDarkTheme } = React.useContext(ExtensionContext);
 
   function toggleStatus(name, newStatus) {
     setExtension((extension) => {
@@ -51,6 +51,7 @@ export default function ExtensionList() {
             isActive={ext.isActive}
             toggleStatus={toggleStatus}
             removeItem={removeItem}
+            isDarkTheme={isDarkTheme}
           />
         );
       })}

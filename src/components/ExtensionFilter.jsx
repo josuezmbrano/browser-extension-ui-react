@@ -7,7 +7,7 @@ import {ExtensionContext} from "./ExtensionUI"
 
 export default function ExtensionFilter() {
   
-  const {idSelected, currentFilter, toggleIdSelected} = React.useContext(ExtensionContext)
+  const {idSelected, currentFilter, toggleIdSelected, isDarkTheme} = React.useContext(ExtensionContext)
 
   const filterButtons = [
     { current: "All", id: 1 },
@@ -18,7 +18,7 @@ export default function ExtensionFilter() {
   return (
     <section className="extension-filter-section-container">
       <div>
-        <h2 className="extension-filter-h2">Extensions List</h2>
+        <h2 className={`extension-filter-h2 ${isDarkTheme === "light" ? "extension-filter-h2-light-theme" : ""}`}>Extensions List</h2>
       </div>
       <div className="extension-filter-button-container">
         {filterButtons.map((filter) => {
@@ -30,6 +30,7 @@ export default function ExtensionFilter() {
               key={filter.id}
               filter={filter.current}
               filterId={filter.id}
+              isDarkTheme={isDarkTheme}
             />
           );
         })}

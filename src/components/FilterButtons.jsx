@@ -1,4 +1,4 @@
-export default function FilterButtons({filterId, filter, idSelected, currentFilter, toggleIdSelected}) {
+export default function FilterButtons({filterId, filter, idSelected, currentFilter, toggleIdSelected, isDarkTheme}) {
 
     // COMPONENTE BASICO PARA LOS BOTONES DE LOS FILTROS DE LA LISTA
     // SE HACE USO DEL CUSTOM HOOK USETOGGLEFILTER
@@ -10,6 +10,6 @@ export default function FilterButtons({filterId, filter, idSelected, currentFilt
     const active = idSelected === filterId && currentFilter === filter
     
     return (
-        <button onClick={() => toggleIdSelected(filterId, filter)}  className={`inactive ${active ? "active" : ""}`}>{filter}</button>
+        <button onClick={() => toggleIdSelected(filterId, filter)}  className={`inactive ${isDarkTheme === "light" ? "inactive-light-theme" : ""} ${active ? "active" : ""}`}>{filter}</button>
     )
 }

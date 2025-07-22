@@ -15,10 +15,21 @@ const ExtensionContext = React.createContext();
 export default function ExtensionUI() {
   const [idSelected, currentFilter, toggleIdSelected] = useToggleFilter();
 
+  const [isDarkTheme, setIsDarkTheme] = React.useState("light")
+
+  function toggleTheme() {
+    setIsDarkTheme(prevTheme => prevTheme === "light" ? "dark" : "light")
+  }
+
+  React.useEffect(() => {
+    document.body.classList.remove("light-theme", "dark-theme")
+    document.body.classList.add(`${isDarkTheme}-theme`)
+  }, [isDarkTheme])
+
   return (
     <main className="ui-container-parent">
-      <ExtensionHeader />
-      <ExtensionContext.Provider value={{idSelected, currentFilter, toggleIdSelected}}>
+      <ExtensionContext.Provider value={{idSelected, currentFilter, toggleIdSelected, toggleTheme, isDarkTheme}}>
+        <ExtensionHeader />
         <ExtensionFilter />
         <ExtensionList />
       </ExtensionContext.Provider>
