@@ -58,7 +58,7 @@ body {
   gap: 10px;
 }
 
-.extension-filter-button-container button {
+.inactive {
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
@@ -67,6 +67,10 @@ body {
   border-radius: 15px;
   background-color: hsl(225, 23%, 36%);
   color: white;
+}
+
+.active {
+  background-color: hsl(3, 86%, 64%);
 }
 
 /* EXTENSION LIST COMPONENT */
@@ -150,13 +154,20 @@ body {
 .switch-track {
   width: 50px;
   height: 25px; 
-  background-color: hsl(225, 23%, 24%); 
   border-radius: 34px; 
   position: relative; 
   transition: background-color 0.4s; 
 }
 
-.switch-thumb {
+.off {
+  background-color: hsl(225, 23%, 24%); 
+}
+
+.on {
+  background-color: hsl(3, 86%, 64%); 
+}
+
+.switch-thumb-off {
   width: 25px; 
   height: 25px; 
   background-color: white; 
@@ -167,14 +178,7 @@ body {
   transition: transform 0.4s; 
 }
 
-.switch-checkbox-hidden:checked + .switch-track {
-  background-color: hsl(3, 86%, 64%); 
-}
-
-.switch-checkbox-hidden:checked + .switch-track .switch-thumb {
+.thumb-on {
   transform: translateX(26px);
-}
-
-.switch-checkbox-hidden:focus + .switch-track {
   box-shadow: 0 0 1px #2196f3;
 }

@@ -1,5 +1,10 @@
-export default function ExtensionItem({ logo, name, description, isActive }) {
-    console.log(logo)
+export default function ExtensionItem({ logo, name, description, isActive, toggleStatus, removeItem }) {
+
+  // RECIBE LAS PROPS; EJECUTA CAMBIOS DE STATUS Y CONDICIONA SEGUN EL VALOR DE ISACTIVE LAS CLASES CSS CORRESPONDIENTES
+
+  function toggleCurrentStatus() {
+    toggleStatus(name, !isActive)
+  }
 
   return (
     <div className="item-container">
@@ -13,13 +18,10 @@ export default function ExtensionItem({ logo, name, description, isActive }) {
         </div>
       </div>
       <div className="bottom-item-container">
-        <button className="remove-button">Remove</button>
-        <label class="switch-container">
-          <input type="checkbox" class="switch-checkbox-hidden" />
-          <div class="switch-track">
-            <div class="switch-thumb"></div>
+        <button onClick={() => removeItem(name)} className="remove-button">Remove</button>
+          <div onClick={toggleCurrentStatus} className={`switch-track ${isActive ? "on" : "off"}`}>
+            <div className={`switch-thumb-off ${isActive ? "thumb-on" : ""}`}></div>
           </div>
-        </label>
       </div>
     </div>
   );
